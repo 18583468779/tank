@@ -1,5 +1,8 @@
+import straw from "./canvas/straw";
 import config from "./config";
 import "./style.css";
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.width = config.canvas.width + "px";
 app.style.height = config.canvas.height + "px";
+
+console.log(straw);
