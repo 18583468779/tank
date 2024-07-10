@@ -1,5 +1,5 @@
 import config from "../config";
-import imgUrl from "../static/images/straw/straw.png";
+
 /*******
  * 定义一个抽象类，因为所有的角色都需要画布
  * 抽象类作为父类，子类也必须定义抽象类的方法
@@ -24,10 +24,24 @@ export default abstract class CanvasAbstract {
 
   protected drawModels() {
     // 创建模型（草地）
+
     const img = document.createElement("img");
-    img.src = imgUrl; // 图片加载不出来，因为图片加载是异步的
+    const position = this.position();
+    img.src = config.images.straw; // 图片加载不出来，因为图片加载是异步的
     img.onload = () => {
-      this.canvas.drawImage(img, 0, 0, config.model.width, config.model.height);
+      this.canvas.drawImage(
+        img,
+        position.x,
+        position.y,
+        config.model.width,
+        config.model.height
+      );
+    };
+  }
+  protected position() {
+    return {
+      x: 220,
+      y: 20,
     };
   }
 }
