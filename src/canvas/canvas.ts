@@ -6,6 +6,10 @@ import { image } from "../service/image";
  * 抽象类作为父类，子类也必须定义抽象类的方法
  *
  * **/
+type PositionType = {
+  x: number;
+  y: number;
+};
 export default abstract class CanvasAbstract {
   abstract render(): void; // 定义抽象方法
   constructor(
@@ -23,21 +27,37 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement("afterbegin", this.el); //将一个给定的元素节点插入到相对于当前元素的指定位置(内部)。
   }
 
-  protected drawModels() {
+  protected drawModels(num: number) {
     // 创建模型（草地）
-    const position = this.position();
-    this.canvas.drawImage(
-      image.get("straw")!,
-      position.x,
-      position.y,
-      config.model.width,
-      config.model.height
-    );
+    this.positionCollection(num).forEach((position: any) => {
+      console.log(position);
+      this.canvas.drawImage(
+        image.get("straw")!,
+        position.x,
+        position.y,
+        config.model.width,
+        config.model.height
+      );
+    });
+  }
+  protected positionCollection(num: number) {
+    // 生成唯一位置，防止重叠
+    const collection = new Set();
+    for (let i = 0; i < num; i++) {
+      collection.add(this.position());
+    }
+    return [...collection];
   }
   protected position() {
+    // 随机位置生成
     return {
-      x: 220,
-      y: 20,
+      x:
+        Math.floor(Math.random() * (config.canvas.width / config.model.width)) *
+        config.model.width,
+      y:
+        Math.floor(
+          Math.random() * (config.canvas.height / config.model.height)
+        ) * config.model.height,
     };
   }
 }

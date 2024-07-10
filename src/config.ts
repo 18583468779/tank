@@ -13,6 +13,9 @@ export default {
     width: 50,
     height: 50,
   },
+  straw: {
+    num: 20,
+  },
   images: {
     // 图片的路径
     straw,
