@@ -6,7 +6,7 @@ export const image = new Map<mapKey, HTMLImageElement>();
 // ****keyof 假设现在有一个类型 T，keyof T 将会给你一个新类型，
 // ****typeof 后面连接值
 
-export default Object.entries(config.images).map(([key, value]) => {
+export const promises = Object.entries(config.images).map(([key, value]) => {
   return new Promise((resolve) => {
     const img = document.createElement("img");
     img.src = value;

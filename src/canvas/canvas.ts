@@ -1,4 +1,5 @@
 import config from "../config";
+import { image } from "../service/image";
 
 /*******
  * 定义一个抽象类，因为所有的角色都需要画布
@@ -6,13 +7,13 @@ import config from "../config";
  *
  * **/
 export default abstract class CanvasAbstract {
+  abstract render(): void; // 定义抽象方法
   constructor(
     protected app = document.querySelector("#app") as HTMLDivElement,
     protected el = document.createElement("canvas"), // 设置画布
     protected canvas = el.getContext("2d")!
   ) {
     this.createCanvas();
-    this.drawModels();
   }
 
   protected createCanvas() {
@@ -24,19 +25,14 @@ export default abstract class CanvasAbstract {
 
   protected drawModels() {
     // 创建模型（草地）
-
-    const img = document.createElement("img");
     const position = this.position();
-    img.src = config.images.straw; // 图片加载不出来，因为图片加载是异步的
-    img.onload = () => {
-      this.canvas.drawImage(
-        img,
-        position.x,
-        position.y,
-        config.model.width,
-        config.model.height
-      );
-    };
+    this.canvas.drawImage(
+      image.get("straw")!,
+      position.x,
+      position.y,
+      config.model.width,
+      config.model.height
+    );
   }
   protected position() {
     return {
