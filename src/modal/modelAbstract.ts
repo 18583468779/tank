@@ -1,15 +1,18 @@
-import { PositionType } from "../canvas/canvas";
 import config from "../config";
 import { image } from "../service/image";
 export default abstract class ModelAbstract {
+  abstract render(): void; // 子类必须实现render方法
   constructor(
     protected canvas: CanvasRenderingContext2D,
-    protected position: PositionType
-  ) {
-    canvas.drawImage(
+    protected x: number,
+    protected y: number
+  ) {}
+
+  protected draw() {
+    this.canvas.drawImage(
       image.get("straw")!,
-      position.x,
-      position.y,
+      this.x,
+      this.y,
       config.model.width,
       config.model.height
     );

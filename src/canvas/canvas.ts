@@ -1,5 +1,4 @@
 import config from "../config";
-import { image } from "../service/image";
 
 /*******
  * 定义一个抽象类，因为所有的角色都需要画布
@@ -26,10 +25,11 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement("afterbegin", this.el); //将一个给定的元素节点插入到相对于当前元素的指定位置(内部)。
   }
 
-  protected drawModels(num: number, model: any) {
-    // 创建模型（草地）
-    this.positionCollection(num).forEach((position: any) => {
-      new model(this.canvas, position);
+  protected drawModels(num: number, model: ModelConstructor) {
+    // 创建模型
+    this.positionCollection(num).forEach((position: PositionType) => {
+      const instance = new model(this.canvas, position.x, position.y);
+      instance.render();
     });
   }
   protected positionCollection(num: number) {
