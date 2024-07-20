@@ -1,2 +1,4 @@
+import ModelAbstract from "./modelAbstract";
+
 // 草地模型
-class Straw {}
+export class Straw extends ModelAbstract {}

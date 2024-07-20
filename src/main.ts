@@ -1,4 +1,4 @@
-import straw from "./canvas/straw";
+import StrawCanvas from "./canvas/straw";
 import config from "./config";
 import { promises } from "./service/image";
 import "./style.css";
@@ -8,6 +8,6 @@ app.style.height = config.canvas.height + "px";
 
 async function bootstrap() {
   await Promise.all(promises);
-  straw.render();
+  StrawCanvas.render();
 }
 void bootstrap();
