@@ -30,7 +30,6 @@ export default abstract class CanvasAbstract {
   protected drawModels(num: number) {
     // 创建模型（草地）
     this.positionCollection(num).forEach((position: any) => {
-      console.log(position);
       this.canvas.drawImage(
         image.get("straw")!,
         position.x,
@@ -41,12 +40,24 @@ export default abstract class CanvasAbstract {
     });
   }
   protected positionCollection(num: number) {
-    // 生成唯一位置，防止重叠
-    const collection = new Set();
+    // 批量生成唯一位置，防止重叠
+    const collection = [] as {
+      x: number;
+      y: number;
+    }[];
     for (let i = 0; i < num; i++) {
-      collection.add(this.position());
+      while (true) {
+        const position = this.position();
+        const exists = collection.some(
+          (c) => c.x == position.x && c.y == position.y
+        );
+        if (!exists) {
+          collection.push(this.position());
+          break;
+        }
+      }
     }
-    return [...collection];
+    return collection;
   }
   protected position() {
     // 随机位置生成
