@@ -2,17 +2,19 @@ import { PositionType } from "../canvas/canvas";
 import config from "../config";
 
 class Position {
+  collection: PositionType[] = []; // 所有模型（草地，坦克等）的位置集合，防止重叠
   public positionCollection(num: number) {
     // 批量生成唯一位置，防止重叠
     const collection = [] as PositionType[];
     for (let i = 0; i < num; i++) {
       while (true) {
         const position = this.position();
-        const exists = collection.some(
+        const exists = this.collection.some(
           (c) => c.x == position.x && c.y == position.y
         );
         if (!exists) {
-          collection.push(this.position());
+          collection.push(position);
+          this.collection.push(position);
           break;
         }
       }
