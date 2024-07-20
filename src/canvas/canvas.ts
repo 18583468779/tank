@@ -1,5 +1,5 @@
 import config from "../config";
-
+import Position from "../service/position";
 /*******
  * 定义一个抽象类，因为所有的角色都需要画布
  * 抽象类作为父类，子类也必须定义抽象类的方法
@@ -27,38 +27,9 @@ export default abstract class CanvasAbstract {
 
   protected drawModels(num: number, model: ModelConstructor) {
     // 创建模型
-    this.positionCollection(num).forEach((position: PositionType) => {
+    Position.positionCollection(num).forEach((position: PositionType) => {
       const instance = new model(this.canvas, position.x, position.y);
       instance.render();
     });
-  }
-  protected positionCollection(num: number) {
-    // 批量生成唯一位置，防止重叠
-    const collection = [] as PositionType[];
-    for (let i = 0; i < num; i++) {
-      while (true) {
-        const position = this.position();
-        const exists = collection.some(
-          (c) => c.x == position.x && c.y == position.y
-        );
-        if (!exists) {
-          collection.push(this.position());
-          break;
-        }
-      }
-    }
-    return collection;
-  }
-  protected position() {
-    // 随机位置生成
-    return {
-      x:
-        Math.floor(Math.random() * (config.canvas.width / config.model.width)) *
-        config.model.width,
-      y:
-        Math.floor(
-          Math.random() * (config.canvas.height / config.model.height)
-        ) * config.model.height,
-    };
   }
 }
