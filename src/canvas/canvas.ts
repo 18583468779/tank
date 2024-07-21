@@ -10,6 +10,7 @@ export type PositionType = {
   y: number;
 };
 export default abstract class CanvasAbstract {
+  protected modelList: IModel[] = []; // 存放模型
   abstract render(): void; // 定义抽象方法
   constructor(
     protected app = document.querySelector("#app") as HTMLDivElement,
@@ -29,7 +30,12 @@ export default abstract class CanvasAbstract {
     // 创建模型
     Position.positionCollection(num).forEach((position: PositionType) => {
       const instance = new model(this.canvas, position.x, position.y);
-      instance.render();
+      this.modelList.push(instance);
     });
+  }
+
+  protected modelRender() {
+    // 渲染模型
+    this.modelList.forEach((model) => model.render());
   }
 }
