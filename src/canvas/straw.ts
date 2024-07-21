@@ -1,6 +1,6 @@
 import config from "../config";
 import CanvasAbstract from "./canvas";
-import { Straw } from "../modal/straw";
+import Straw from "../modal/straw";
 // 草地画布
 class StrawCanvas extends CanvasAbstract {
   constructor() {

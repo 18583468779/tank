@@ -1,9 +1,9 @@
 import { image } from "../service/image";
 import ModelAbstract from "./modelAbstract";
 
-// 草地模型
+// 墙体模型
 export default class extends ModelAbstract implements IModel {
   render(): void {
-    super.draw(image.get("straw")!);
+    super.draw(image.get("wall")!);
   }
 }

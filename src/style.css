@@ -100,4 +100,8 @@ body {
 }
 body #app {
   background: lightcoral;
+  position: relative;
+}
+body #app canvas {
+  position: absolute;
 }

@@ -1,5 +1,4 @@
 import config from "../config";
-import { image } from "../service/image";
 export default abstract class ModelAbstract {
   abstract render(): void; // 子类必须实现render方法
   constructor(
@@ -8,9 +7,9 @@ export default abstract class ModelAbstract {
     protected y: number
   ) {}
 
-  protected draw() {
+  protected draw(image: HTMLImageElement) {
     this.canvas.drawImage(
-      image.get("straw")!,
+      image,
       this.x,
       this.y,
       config.model.width,
