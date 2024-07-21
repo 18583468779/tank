@@ -2,6 +2,7 @@
 import straw from "./static/images/straw/straw.png";
 import tank from "./static/images/tank/bottom.gif";
 import wall from "./static/images/wall/wall.gif";
+import steel from "./static/images/wall/steels.gif";
 
 export default {
   canvas: {
@@ -11,8 +12,8 @@ export default {
   },
   model: {
     // 模型的宽高
-    width: 35,
-    height: 35,
+    width: 40,
+    height: 40,
   },
   straw: {
     num: 50,
@@ -20,10 +21,14 @@ export default {
   wall: {
     num: 50,
   },
+  steel: {
+    num: 50,
+  },
   images: {
     // 图片的路径
     straw,
     tank,
     wall,
+    steel,
   },
 };

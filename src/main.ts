@@ -1,5 +1,6 @@
 import StrawCanvas from "./canvas/straw";
 import WallCanvas from "./canvas/wall";
+import SteelCanvas from "./canvas/steel";
 
 import config from "./config";
 import { promises } from "./service/image";
@@ -12,5 +13,6 @@ async function bootstrap() {
   await Promise.all(promises);
   StrawCanvas.render();
   WallCanvas.render();
+  SteelCanvas.render();
 }
 void bootstrap();
