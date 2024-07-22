@@ -2,7 +2,7 @@ import config from "../config";
 import CanvasAbstract from "./canvas";
 import Steel from "../modal/steel";
 // 转墙体画布
-class SteelCanvas extends CanvasAbstract {
+class SteelCanvas extends CanvasAbstract implements ICanvas {
   constructor() {
     super();
     super.drawModels(); // super 关键字可以调用父类的方法

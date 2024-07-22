@@ -7,6 +7,9 @@ interface ModelConstructor {
 
 interface IModel {
   render(): void;
-  // num(): number;
-  // model(): ModelConstructor;
+}
+
+interface ICanvas {
+  num(): number;
+  model(): ModelConstructor;
 }

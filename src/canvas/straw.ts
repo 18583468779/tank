@@ -2,7 +2,7 @@ import config from "../config";
 import CanvasAbstract from "./canvas";
 import Straw from "../modal/straw";
 // 草地画布
-class StrawCanvas extends CanvasAbstract {
+class StrawCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.straw.num;
   }

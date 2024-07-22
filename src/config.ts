@@ -28,6 +28,9 @@ export default {
   water: {
     num: 50,
   },
+  tank: {
+    num: 20,
+  },
   images: {
     // 图片的路径
     straw,

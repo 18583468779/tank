@@ -2,7 +2,7 @@ import config from "../config";
 import CanvasAbstract from "./canvas";
 import Water from "../modal/water";
 // 水画布
-class WaterCanvas extends CanvasAbstract {
+class WaterCanvas extends CanvasAbstract implements ICanvas {
   constructor() {
     super();
     super.drawModels(); // super 关键字可以调用父类的方法
