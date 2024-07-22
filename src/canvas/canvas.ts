@@ -12,6 +12,9 @@ export type PositionType = {
 export default abstract class CanvasAbstract {
   protected modelList: IModel[] = []; // 存放模型
   abstract render(): void; // 定义抽象方法
+  abstract num(): number; // 生成数量
+  abstract model(): ModelConstructor; // 模型
+
   constructor(
     protected app = document.querySelector("#app") as HTMLDivElement,
     protected el = document.createElement("canvas"), // 设置画布
@@ -26,12 +29,15 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement("afterbegin", this.el); //将一个给定的元素节点插入到相对于当前元素的指定位置(内部)。
   }
 
-  protected drawModels(num: number, model: ModelConstructor) {
+  protected drawModels() {
     // 创建模型
-    Position.positionCollection(num).forEach((position: PositionType) => {
-      const instance = new model(this.canvas, position.x, position.y);
-      this.modelList.push(instance);
-    });
+    Position.positionCollection(this.num()).forEach(
+      (position: PositionType) => {
+        const model = this.model();
+        const instance = new model(this.canvas, position.x, position.y);
+        this.modelList.push(instance);
+      }
+    );
   }
 
   protected modelRender() {

@@ -5,9 +5,14 @@ import Wall from "../modal/wall";
 class WallCanvas extends CanvasAbstract {
   constructor() {
     super();
-    super.drawModels(config.wall.num, Wall); // super 关键字可以调用父类的方法
+    super.drawModels(); // super 关键字可以调用父类的方法
   }
-
+  num(): number {
+    return config.wall.num;
+  }
+  model(): ModelConstructor {
+    return Wall;
+  }
   render(): void {
     super.modelRender();
   }

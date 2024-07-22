@@ -3,9 +3,15 @@ import CanvasAbstract from "./canvas";
 import Straw from "../modal/straw";
 // 草地画布
 class StrawCanvas extends CanvasAbstract {
+  num(): number {
+    return config.straw.num;
+  }
+  model(): ModelConstructor {
+    return Straw;
+  }
   constructor() {
     super();
-    super.drawModels(config.straw.num, Straw); // super 关键字可以调用父类的方法
+    super.drawModels(); // super 关键字可以调用父类的方法
   }
 
   render(): void {

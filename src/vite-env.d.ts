@@ -7,4 +7,6 @@ interface ModelConstructor {
 
 interface IModel {
   render(): void;
+  // num(): number;
+  // model(): ModelConstructor;
 }

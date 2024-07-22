@@ -5,9 +5,14 @@ import Steel from "../modal/steel";
 class SteelCanvas extends CanvasAbstract {
   constructor() {
     super();
-    super.drawModels(config.wall.num, Steel); // super 关键字可以调用父类的方法
+    super.drawModels(); // super 关键字可以调用父类的方法
   }
-
+  num(): number {
+    return config.steel.num;
+  }
+  model(): ModelConstructor {
+    return Steel;
+  }
   render(): void {
     super.modelRender();
   }

@@ -5,9 +5,14 @@ import Water from "../modal/water";
 class WaterCanvas extends CanvasAbstract {
   constructor() {
     super();
-    super.drawModels(config.water.num, Water); // super 关键字可以调用父类的方法
+    super.drawModels(); // super 关键字可以调用父类的方法
   }
-
+  num(): number {
+    return config.water.num;
+  }
+  model(): ModelConstructor {
+    return Water;
+  }
   render(): void {
     super.modelRender();
   }
