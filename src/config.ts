@@ -3,6 +3,7 @@ import straw from "./static/images/straw/straw.png";
 import tank from "./static/images/tank/bottom.gif";
 import wall from "./static/images/wall/wall.gif";
 import steel from "./static/images/wall/steels.gif";
+import water from "./static/images/water/water.gif";
 
 export default {
   canvas: {
@@ -16,12 +17,15 @@ export default {
     height: 40,
   },
   straw: {
-    num: 50,
+    num: 80,
   },
   wall: {
-    num: 50,
+    num: 80,
   },
   steel: {
+    num: 50,
+  },
+  water: {
     num: 50,
   },
   images: {
@@ -30,5 +34,6 @@ export default {
     tank,
     wall,
     steel,
+    water,
   },
 };
