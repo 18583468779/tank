@@ -1,6 +1,7 @@
 import config from "../config";
 export default abstract class ModelAbstract {
   abstract render(): void; // 子类必须实现render方法
+  abstract name: string;
   constructor(
     protected canvas: CanvasRenderingContext2D,
     protected x: number,
