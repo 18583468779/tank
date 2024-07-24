@@ -6,17 +6,34 @@ import ModelAbstract from "./modelAbstract";
 // 墙体模型
 export default class extends ModelAbstract implements IModel {
   name: string = "tank";
-  protected direction: directionEnum = directionEnum.top;
   render(): void {
-    this.randomDirection();
-    super.draw(this.randomImage());
+    this.move();
   }
-  // 随机方向
-  randomDirection() {
-    const index = Math.floor(Math.random() * 4);
-    this.direction = Object.values(directionEnum)[index] as directionEnum;
+
+  protected move() {
+    this.canvas.clearRect(
+      this.x,
+      this.y,
+      config.model.width,
+      config.model.height
+    );
+    switch (this.direction) {
+      case directionEnum.top:
+        this.y -= 2;
+        break;
+      case directionEnum.right:
+        this.x += 2;
+        break;
+      case directionEnum.bottom:
+        this.y += 2;
+        break;
+      case directionEnum.left:
+        this.x -= 2;
+        break;
+    }
   }
-  randomImage() {
+
+  image() {
     let dir = this.name + this.direction;
     return image.get(dir as keyof typeof config.images)!;
   }

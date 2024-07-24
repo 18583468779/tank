@@ -5,7 +5,10 @@ import ModelAbstract from "./modelAbstract";
 // 墙体模型
 export default class extends ModelAbstract implements IModel {
   name: string = "wall";
+  image(): HTMLImageElement {
+    return image.get(this.name as keyof typeof config.images)!;
+  }
   render(): void {
-    super.draw(image.get(this.name as keyof typeof config.images)!);
+    // super.draw(this.image());
   }
 }

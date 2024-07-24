@@ -12,7 +12,7 @@ class TankCanvas extends CanvasAbstract implements ICanvas {
   }
   render(): void {
     this.drawModels(); // super 关键字可以调用父类的方法
-    super.modelRender();
+    setInterval(() => super.modelRender(), 50);
   }
   protected drawModels() {
     // 创建模型
